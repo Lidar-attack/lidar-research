@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reflective Deception: Exploiting LiDAR Vulnerabilities in Autonomous Vehicles Through Mirror-Based Attacks</title>
+    <link rel="stylesheet" href="professional.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&family=Source+Sans+Pro:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="main-header">
+        <div class="container">
+            <div class="header-content">
+                <h1 class="paper-title">Reflective Deception: Exploiting LiDAR Vulnerabilities in Autonomous Vehicles Through Mirror-Based Attacks</h1>
+                <div class="conference-info">
+                    <p class="venue">Network and Distributed System Security (NDSS) Symposium 2025</p>
+                    <p class="date">23-28 February 2025, San Diego, CA, USA</p>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <nav class="navigation">
+        <div class="container">
+            <ul class="nav-list">
+                <li><a href="#summary" class="nav-item">Summary</a></li>
+                <li><a href="#methodology" class="nav-item">Methodology</a></li>
+                <li><a href="#experiments" class="nav-item">Real-World Experiments</a></li>
+                <li><a href="#simulation" class="nav-item">Simulation Framework</a></li>
+                <li><a href="#evaluation" class="nav-item">System Evaluation</a></li>
+                <li><a href="#results" class="nav-item">Results</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="main-content">
+        <section id="summary" class="section">
+            <div class="container">
+                <h2 class="section-heading">Research Summary</h2>
+                
+                <div class="summary-grid">
+                    <div class="summary-text">
+                        <div class="abstract-box">
+                            <h3>Abstract</h3>
+                            <p>Autonomous vehicles (AVs) heavily rely on LiDAR sensors for accurate 3D perception of their environment. However, the physical properties of LiDAR make it inherently vulnerable to optical manipulation. In this paper, we investigate a novel class of passive LiDAR spoofing attacks that exploit mirror-like surfaces to inject or remove objects from the AV's perception.</p>
+                            
+                            <p>Unlike prior work that requires active emitters or electronic tampering, our attacks rely solely on strategically placed planar mirrors to redirect LiDAR beams—posing a low-cost, stealthy threat. We introduce a comprehensive threat framework encompassing two adversarial goals: <strong>Object Addition Attacks (OAA)</strong>, which create phantom obstacles, and <strong>Object Removal Attacks (ORA)</strong>, which obscure real objects.</p>
+                        </div>
+                        
+                        <div class="key-contributions">
+                            <h3>Key Contributions</h3>
+                            <ul class="contributions-list">
+                                <li>First comprehensive analysis of passive mirror-based LiDAR attacks in automotive contexts</li>
+                                <li>Empirically validated geometric models characterizing mirror-induced LiDAR artifacts</li>
+                                <li>Physics-informed simulation framework enabling safe, repeatable attack evaluation</li>
+                                <li>End-to-end validation on complete autonomous driving software stack (Autoware)</li>
+                                <li>Analysis of potential defense mechanisms and their limitations</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="summary-visual">
+                        <div class="attack-overview">
+                            <h4>Attack Overview</h4>
+                            <div class="attack-types-professional">
+                                <div class="attack-type-card">
+                                    <div class="attack-icon ora-icon">ORA</div>
+                                    <h5>Object Removal Attack</h5>
+                                    <p>Mirrors deflect LiDAR beams away from real obstacles, creating dangerous blind spots</p>
+                                </div>
+                                <div class="attack-type-card">
+                                    <div class="attack-icon oaa-icon">OAA</div>
+                                    <h5>Object Addition Attack</h5>
+                                    <p>Mirrors redirect beams to create phantom obstacles, triggering false emergency responses</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="methodology" class="section alt-bg">
+            <div class="container">
+                <h2 class="section-heading">Research Methodology</h2>
+                
+                <div class="methodology-overview">
+                    <div class="method-phases">
+                        <div class="phase-item">
+                            <div class="phase-number">1</div>
+                            <div class="phase-content">
+                                <h4>Threat Modeling</h4>
+                                <p>Formal analysis of mirror-based attack vectors and adversary capabilities</p>
+                            </div>
+                        </div>
+                        <div class="phase-item">
+                            <div class="phase-number">2</div>
+                            <div class="phase-content">
+                                <h4>Real-World Experimentation</h4>
+                                <p>Controlled outdoor experiments with commercial LiDAR systems</p>
+                            </div>
+                        </div>
+                        <div class="phase-item">
+                            <div class="phase-number">3</div>
+                            <div class="phase-content">
+                                <h4>Empirical Modeling</h4>
+                                <p>Mathematical characterization of mirror-induced artifacts</p>
+                            </div>
+                        </div>
+                        <div class="phase-item">
+                            <div class="phase-number">4</div>
+                            <div class="phase-content">
+                                <h4>Simulation Integration</h4>
+                                <p>CARLA-based framework for safe, scalable attack evaluation</p>
+                            </div>
+                        </div>
+                        <div class="phase-item">
+                            <div class="phase-number">5</div>
+                            <div class="phase-content">
+                                <h4>System Validation</h4>
+                                <p>End-to-end testing on production autonomous driving stack</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="experiments" class="section">
+            <div class="container">
+                <h2 class="section-heading">Real-World Experimental Campaign</h2>
+                
+                <div class="experiment-details">
+                    <div class="setup-overview">
+                        <h3>Experimental Setup</h3>
+                        <div class="setup-specs">
+                            <div class="spec-grid">
+                                <div class="spec-item">
+                                    <strong>LiDAR System:</strong>
+                                    <span>Ouster OS1-128 (128-channel, 10Hz)</span>
+                                </div>
+                                <div class="spec-item">
+                                    <strong>Mirror Configuration:</strong>
+                                    <span>High-reflectivity glass panels with silver backing</span>
+                                </div>
+                                <div class="spec-item">
+                                    <strong>Test Environment:</strong>
+                                    <span>Controlled outdoor environment, clear weather conditions</span>
+                                </div>
+                                <div class="spec-item">
+                                    <strong>Data Collection:</strong>
+                                    <span>ROS 2 logging with synchronized sensor data</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="experimental-scenarios">
+                        <h3>Attack Scenario Implementation</h3>
+                        <div class="scenario-comparison">
+                            <div class="scenario-detailed">
+                                <img src="experiment_ora.png" alt="Object Removal Attack experimental setup showing vehicle with LiDAR sensor, strategically positioned mirror, and target obstacle" class="scenario-image">
+                                <div class="scenario-description">
+                                    <h4>Object Removal Attack (ORA)</h4>
+                                    <p><strong>Objective:</strong> Demonstrate how mirrors can render real obstacles invisible to LiDAR perception</p>
+                                    <p><strong>Setup:</strong> Traffic cone placed 4m from vehicle, 60cm×40cm mirror positioned to deflect LiDAR beams away from obstacle</p>
+                                    <p><strong>Key Parameters:</strong> Mirror angles tested at 0°, 15°, 30°, and 45° relative to LiDAR forward axis</p>
+                                </div>
+                            </div>
+                            
+                            <div class="scenario-detailed">
+                                <img src="experiment_oaa.png" alt="Object Addition Attack experimental setup showing mirror array positioned to create phantom obstacles" class="scenario-image">
+                                <div class="scenario-description">
+                                    <h4>Object Addition Attack (OAA)</h4>
+                                    <p><strong>Objective:</strong> Generate phantom obstacles through controlled beam redirection</p>
+                                    <p><strong>Setup:</strong> Modular mirror array (30cm×30cm tiles) positioned to reflect beams toward environmental structures</p>
+                                    <p><strong>Key Parameters:</strong> Surface areas of 0.18m², 0.36m², and 0.60m² tested at 30°, 45°, and 60° tilt angles</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="point-cloud-analysis" class="section alt-bg">
+            <div class="container">
+                <h2 class="section-heading">Point Cloud Analysis</h2>
+                
+                <div class="analysis-content">
+                    <p class="section-intro">Real-time LiDAR point cloud data demonstrates the systematic effect of mirror parameters on attack effectiveness. The following visualizations show authentic sensor data captured during controlled experiments.</p>
+                    
+                    <div class="analysis-categories">
+                        <div class="analysis-category">
+                            <h3>Mirror Surface Area Impact</h3>
+                            <p class="category-description">Increasing mirror surface area directly correlates with phantom object density and detection confidence.</p>
+                            <div class="video-analysis-grid">
+                                <div class="video-analysis-item">
+                                    <video controls class="analysis-video" data-src="videos/PC_30_2mr.mp4">
+                                        <source src="videos/PC_30_2mr.mp4" type="video/mp4">
+                                    </video>
+                                    <div class="video-metadata">
+                                        <h5>2 Mirror Configuration (0.18m²)</h5>
+                                        <p>Sparse point generation, minimal phantom presence</p>
+                                    </div>
+                                </div>
+                                <div class="video-analysis-item">
+                                    <video controls class="analysis-video" data-src="videos/PC_30_4mr.mp4">
+                                        <source src="videos/PC_30_4mr.mp4" type="video/mp4">
+                                    </video>
+                                    <div class="video-metadata">
+                                        <h5>4 Mirror Configuration (0.36m²)</h5>
+                                        <p>Increased density, coherent object formation</p>
+                                    </div>
+                                </div>
+                                <div class="video-analysis-item">
+                                    <video controls class="analysis-video" data-src="videos/PC_30_6mr.mp4">
+                                        <source src="videos/PC_30_6mr.mp4" type="video/mp4">
+                                    </video>
+                                    <div class="video-metadata">
+                                        <h5>6 Mirror Configuration (0.60m²)</h5>
+                                        <p>High-density phantom object, vehicle-like structure</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="analysis-category">
+                            <h3>Angular Configuration Effects</h3>
+                            <p class="category-description">Mirror tilt angle determines phantom object placement, detection timing, and spatial persistence.</p>
+                            <div class="video-analysis-grid">
+                                <div class="video-analysis-item">
+                                    <video controls class="analysis-video" data-src="videos/PC_45_6mr.mp4">
+                                        <source src="videos/PC_45_6mr.mp4" type="video/mp4">
+                                    </video>
+                                    <div class="video-metadata">
+                                        <h5>45° Mirror Angle</h5>
+                                        <p>Intermediate detection window, moderate lateral displacement</p>
+                                    </div>
+                                </div>
+                                <div class="video-analysis-item">
+                                    <video controls class="analysis-video" data-src="videos/PC_60_6mr.mp4">
+                                        <source src="videos/PC_60_6mr.mp4" type="video/mp4">
+                                    </video>
+                                    <div class="video-metadata">
+                                        <h5>60° Mirror Angle</h5>
+                                        <p>Early detection, persistent phantom barrier formation</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="simulation" class="section">
+            <div class="container">
+                <h2 class="section-heading">CARLA Simulation Framework</h2>
+                
+                <div class="simulation-content">
+                    <div class="framework-overview">
+                        <h3>Physics-Informed Attack Injection Pipeline</h3>
+                        <p>We developed a comprehensive simulation framework that integrates empirically validated models into the CARLA autonomous driving simulator, enabling safe and repeatable evaluation of mirror-based attacks.</p>
+                        
+                        <div class="framework-features">
+                            <div class="feature-grid">
+                                <div class="feature-item">
+                                    <h4>Real-Time Model Integration</h4>
+                                    <p>Empirical models derived from real-world experiments drive dynamic phantom object synthesis based on vehicle-mirror geometry</p>
+                                </div>
+                                <div class="feature-item">
+                                    <h4>Probabilistic Attack Simulation</h4>
+                                    <p>Stochastic modeling captures the natural variability observed in physical mirror reflections</p>
+                                </div>
+                                <div class="feature-item">
+                                    <h4>Safety-Critical Scenario Testing</h4>
+                                    <p>Controlled evaluation of cascading failures from perception errors through planning and control modules</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="collision-demonstration">
+                        <h3>Cascading Failure Demonstration</h3>
+                        <div class="demo-analysis">
+                            <div class="demo-video-section">
+                                <video controls class="main-analysis-video" data-src="crash_demo/combined_demo.mp4">
+                                    <source src="crash_demo/combined_demo.mp4" type="video/mp4">
+                                </video>
+                            </div>
+                            <div class="demo-analysis-text">
+                                <h4>Multi-Vehicle Collision Scenario</h4>
+                                <p>This simulation demonstrates the complete failure chain triggered by a mirror-induced phantom obstacle:</p>
+                                <div class="timeline-analysis">
+                                    <div class="timeline-item">
+                                        <span class="timeline-time">T ≈ 11.0s</span>
+                                        <span class="timeline-event">Mirror attack geometry becomes active, phantom object injection initiated</span>
+                                    </div>
+                                    <div class="timeline-item">
+                                        <span class="timeline-time">T ≈ 11.2s</span>
+                                        <span class="timeline-event">Lead vehicle perception system detects high-confidence obstacle, emergency braking engaged</span>
+                                    </div>
+                                    <div class="timeline-item">
+                                        <span class="timeline-time">T ≈ 11.8s</span>
+                                        <span class="timeline-event">Following vehicle reaction time insufficient for safe stopping distance</span>
+                                    </div>
+                                    <div class="timeline-item">
+                                        <span class="timeline-time">T ≈ 12.0s</span>
+                                        <span class="timeline-event">Rear-end collision occurs, demonstrating cascading safety failure</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="evaluation" class="section alt-bg">
+            <div class="container">
+                <h2 class="section-heading">Full-Stack System Evaluation</h2>
+                
+                <div class="evaluation-content">
+                    <div class="system-setup">
+                        <h3>Autoware Integration Testing</h3>
+                        <div class="setup-details">
+                            <div class="platform-info">
+                                <div class="platform-item">
+                                    <strong>Test Vehicle:</strong> Kia Soul EV with roof-mounted sensor array
+                                </div>
+                                <div class="platform-item">
+                                    <strong>Software Stack:</strong> Autoware.AI with CenterPoint 3D object detection
+                                </div>
+                                <div class="platform-item">
+                                    <strong>Operating Mode:</strong> Full autonomous operation with safety driver monitoring
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="system-responses">
+                        <h3>Autonomous Vehicle Response Analysis</h3>
+                        <p class="response-intro">Different mirror configurations produce distinct failure modes in the autonomous driving system, each presenting unique safety risks:</p>
+                        
+                        <div class="response-analysis-grid">
+                            <div class="response-item-detailed">
+                                <div class="response-video-container">
+                                    <video controls class="response-analysis-video" data-src="videos/autonomos_30_6mr.mp4">
+                                        <source src="videos/autonomos_30_6mr.mp4" type="video/mp4">
+                                    </video>
+                                </div>
+                                <div class="response-analysis-text">
+                                    <h4>30° Configuration: Late-Onset Emergency Braking</h4>
+                                    <p><strong>Behavior:</strong> Phantom object appears at close range (< 3m), triggering immediate high-jerk emergency stop</p>
+                                    <p><strong>Risk Analysis:</strong> Sudden deceleration creates high rear-end collision probability in traffic scenarios</p>
+                                    <p><strong>Technical Details:</strong> System latency prevents smooth deceleration profile, resulting in potentially dangerous vehicle dynamics</p>
+                                </div>
+                            </div>
+                            
+                            <div class="response-item-detailed">
+                                <div class="response-video-container">
+                                    <video controls class="response-analysis-video" data-src="videos/autonomos_45_6mr.mp4">
+                                        <source src="videos/autonomos_45_6mr.mp4" type="video/mp4">
+                                    </video>
+                                </div>
+                                <div class="response-analysis-text">
+                                    <h4>45° Configuration: Mid-Maneuver Interruption</h4>
+                                    <p><strong>Behavior:</strong> Phantom detection during active turning maneuver, causing abrupt stop mid-turn</p>
+                                    <p><strong>Risk Analysis:</strong> Stopping in intersection or curve creates traffic obstruction and collision hazard</p>
+                                    <p><strong>Technical Details:</strong> Planning system prioritizes obstacle avoidance over maneuver completion, leading to unsafe positioning</p>
+                                </div>
+                            </div>
+                            
+                            <div class="response-item-detailed">
+                                <div class="response-video-container">
+                                    <video controls class="response-analysis-video" data-src="videos/autonomos_60mr.mp4">
+                                        <source src="videos/autonomos_60mr.mp4" type="video/mp4">
+                                    </video>
+                                </div>
+                                <div class="response-analysis-text">
+                                    <h4>60° Configuration: Pre-Intersection Blocking</h4>
+                                    <p><strong>Behavior:</strong> Early phantom detection (> 5m) causes vehicle to stop well before intended path</p>
+                                    <p><strong>Risk Analysis:</strong> Unexplained stops disrupt traffic flow and create unpredictable behavior for human drivers</p>
+                                    <p><strong>Technical Details:</strong> High-confidence false positive overwhelms sensor fusion algorithms, preventing rational decision-making</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="results" class="section">
+            <div class="container">
+                <h2 class="section-heading">Research Findings</h2>
+                
+                <div class="findings-content">
+                    <div class="key-results">
+                        <h3>Critical Vulnerabilities Identified</h3>
+                        <div class="results-grid">
+                            <div class="result-item">
+                                <div class="result-metric">
+                                    <span class="metric-value">100%</span>
+                                    <span class="metric-label">Attack Success Rate</span>
+                                </div>
+                                <p>All tested mirror configurations successfully induced perception failures in the target autonomous vehicle system</p>
+                            </div>
+                            
+                            <div class="result-item">
+                                <div class="result-metric">
+                                    <span class="metric-value">74%</span>
+                                    <span class="metric-label">Peak Detection Confidence</span>
+                                </div>
+                                <p>Maximum confidence score achieved for phantom vehicle classification using 6-mirror array configuration</p>
+                            </div>
+                            
+                            <div class="result-item">
+                                <div class="result-metric">
+                                    <span class="metric-value">< $50</span>
+                                    <span class="metric-label">Attack Cost</span>
+                                </div>
+                                <p>Total material cost for effective attack implementation using commercially available mirrors</p>
+                            </div>
+                            
+                            <div class="result-item">
+                                <div class="result-metric">
+                                    <span class="metric-value">3-8m</span>
+                                    <span class="metric-label">Effective Range</span>
+                                </div>
+                                <p>Distance range over which mirror-based attacks remain effective across tested configurations</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="implications">
+                        <h3>Security Implications</h3>
+                        <div class="implications-grid">
+                            <div class="implication-item">
+                                <h4>Attack Surface Analysis</h4>
+                                <p>Mirror-based attacks represent a previously underexplored attack vector that bypasses existing cybersecurity defenses by operating entirely in the physical domain</p>
+                            </div>
+                            
+                            <div class="implication-item">
+                                <h4>Scalability Concerns</h4>
+                                <p>The low cost and accessibility of required materials make these attacks feasible for a wide range of potential adversaries in real-world deployments</p>
+                            </div>
+                            
+                            <div class="implication-item">
+                                <h4>Detection Challenges</h4>
+                                <p>Passive nature of attacks produces no electronic signatures, making detection with conventional cybersecurity monitoring approaches infeasible</p>
+                            </div>
+                            
+                            <div class="implication-item">
+                                <h4>Systemic Vulnerability</h4>
+                                <p>Fundamental reliance on LiDAR time-of-flight assumptions makes all current autonomous vehicle architectures potentially susceptible</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="research-statement">
+                    <h4>Responsible Disclosure</h4>
+                    <p>This research is conducted for defensive security purposes to improve the safety and security of autonomous vehicle systems. All experiments were performed in controlled environments with appropriate safety measures.</p>
+                </div>
+                
+                <div class="ethical-considerations">
+                    <h4>Ethical Considerations</h4>
+                    <p>The goal of this work is to identify and address vulnerabilities before malicious exploitation occurs. We encourage the development of robust countermeasures and improved sensor fusion techniques.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="professional.js"></script>
+</body>
+</html>

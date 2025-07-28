@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reflective Deception: Exploiting LiDAR Vulnerabilities in Autonomous Vehicles Through Mirror-Based Attacks</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&family=Source+Sans+Pro:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Embedded CSS - Professional Academic Research Website Styles */
+
+        /* Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Lato', 'Source Sans Pro', -apple-system, BlinkMacSystemFont, sans-serif;
+            font-size: 14px;
+            line-height: 1.6;
+            color: #333333;
+            background-color: #ffffff;
+            font-weight: 400;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 30px;
+        }
+
+        /* Typography */
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Lato', sans-serif;
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 1rem;
+        }
+
+        h1 {
+            font-size: 1.8rem;
+            color: #1a1a1a;
+        }
+
+        h2 {
+            font-size: 1.5rem;
+            color: rgba(34, 110, 147, 1);
+        }
+
+        h3 {
+            font-size: 1.3rem;
+            color: #1a1a1a;
+        }
+
+        h4 {
+            font-size: 1.1rem;
+            color: rgba(34, 110, 147, 1);
+        }
+
+        h5 {
+            font-size: 1rem;
+            color: #1a1a1a;
+            font-weight: 600;
+        }
+
+        p {
+            margin-bottom: 1rem;
+            text-align: justify;
+        }
+
+        strong {
+            font-weight: 600;
+            color: #1a1a1a;
+        }
+
+        /* Header */
+        .main-header {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            padding: 40px 0;
+            border-bottom: 3px solid rgba(34, 110, 147, 1);
+        }
+
+        .header-content {
+            text-align: center;
+        }
+
+        .paper-title {
+            font-size: 2rem;
+            font-weight: 900;
+            color: #1a1a1a;
+            margin-bottom: 20px;
+            line-height: 1.3;
+        }
+
+        .conference-info {
+            color: #666666;
+            font-size: 1rem;
+        }
+
+        .conference-info p {
+            margin-bottom: 0.5rem;
+        }
+
+        .venue {
+            font-weight: 600;
+            color: rgba(34, 110, 147, 1);
+        }
+
+        /* Navigation */
+        .navigation {
+            background: rgba(34, 110, 147, 1);
+            padding: 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .nav-list {
+            display: flex;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .nav-item {
+            color: white;
+            text-decoration: none;
+            padding: 15px 20px;
+            display: block;
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: background-color 0.3s ease;
+            border-bottom: 3px solid transparent;
+        }
+
+        .nav-item:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            border-bottom-color: rgba(255, 255, 255, 0.5);
+        }
+
+        .nav-item.active {
+            background-color: rgba(255, 255, 255, 0.15);
+            border-bottom-color: white;
+        }
+
+        /* Main Content */
+        .main-content {
+            background: white;
+        }
+
+        .section {
+            padding: 50px 0;
+            border-bottom: 1px solid #e9ecef;
+        }
+
+        .section.alt-bg {
+            background-color: #f8f9fa;
+        }
+
+        .section-heading {
+            text-align: center;
+            margin-bottom: 40px;
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+        .section-heading::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background: rgba(34, 110, 147, 1);
+        }
+
+        .section-intro {
+            font-size: 1.1rem;
+            text-align: center;
+            color: #666;
+            margin-bottom: 40px;
+            font-style: italic;
+        }
+
+        /* Summary Section */
+        .summary-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 40px;
+            align-items: start;
+        }
+
+        .abstract-box {
+            background: #f8f9fa;
+            padding: 30px;
+            border-radius: 8px;
+            border-left: 4px solid rgba(34, 110, 147, 1);
+            margin-bottom: 30px;
+        }
+
+        .abstract-box h3 {
+            color: rgba(34, 110, 147, 1);
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+        }
+
+        .key-contributions {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            border: 1px solid #e9ecef;
+        }
+
+        .contributions-list {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .contributions-list li {
+            padding: 8px 0;
+            padding-left: 25px;
+            position: relative;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .contributions-list li::before {
+            content: '▸';
+            position: absolute;
+            left: 0;
+            color: rgba(34, 110, 147, 1);
+            font-weight: bold;
+        }
+
+        .contributions-list li:last-child {
+            border-bottom: none;
+        }
+
+        /* Attack Overview */
+        .attack-overview {
+            background: white;
+            padding: 25px;
+            border-radius: 8px;
+            border: 1px solid #e9ecef;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        .attack-overview h4 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: rgba(34, 110, 147, 1);
+        }
+
+        .attack-types-professional {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .attack-type-card {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 6px;
+            border-left: 4px solid rgba(34, 110, 147, 1);
+        }
+
+        .attack-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 900;
+            font-size: 0.9rem;
+            color: white;
+            flex-shrink: 0;
+        }
+
+        .ora-icon {
+            background: #dc3545;
+        }
+
+        .oaa-icon {
+            background: #28a745;
+        }
+
+        .attack-type-card h5 {
+            margin-bottom: 5px;
+            font-size: 1rem;
+            color: #1a1a1a;
+        }
+
+        .attack-type-card p {
+            margin: 0;
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        /* Notice Box */
+        .notice-box {
+            background: #fff3cd;
+            border: 1px solid #ffeaa7;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 30px 0;
+            text-align: center;
+        }
+
+        .notice-box h4 {
+            color: #856404;
+            margin-bottom: 10px;
+        }
+
+        .notice-box p {
+            color: #856404;
+            margin: 0;
+            font-size: 0.95rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 20px;
+            }
+            
+            .paper-title {
+                font-size: 1.5rem;
+            }
+            
+            .nav-list {
+                flex-direction: column;
+            }
+            
+            .nav-item {
+                text-align: center;
+                padding: 12px 20px;
+            }
+            
+            .summary-grid {
+                grid-template-columns: 1fr;
+                gap: 25px;
+            }
+            
+            .section {
+                padding: 30px 0;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 15px;
+            }
+            
+            .paper-title {
+                font-size: 1.3rem;
+            }
+            
+            .main-header {
+                padding: 25px 0;
+            }
+            
+            .attack-type-card {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="main-header">
+        <div class="container">
+            <div class="header-content">
+                <h1 class="paper-title">Reflective Deception: Exploiting LiDAR Vulnerabilities in Autonomous Vehicles Through Mirror-Based Attacks</h1>
+                <div class="conference-info">
+                    <p class="venue">Network and Distributed System Security (NDSS) Symposium 2025</p>
+                    <p class="date">23-28 February 2025, San Diego, CA, USA</p>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <nav class="navigation">
+        <div class="container">
+            <ul class="nav-list">
+                <li><a href="#summary" class="nav-item">Summary</a></li>
+                <li><a href="#methodology" class="nav-item">Methodology</a></li>
+                <li><a href="#experiments" class="nav-item">Experiments</a></li>
+                <li><a href="#results" class="nav-item">Results</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="main-content">
+        <section id="summary" class="section">
+            <div class="container">
+                <h2 class="section-heading">Research Summary</h2>
+                
+                <div class="notice-box">
+                    <h4>📄 Standalone Version Notice</h4>
+                    <p>This is a standalone HTML version. For full interactive experience with videos and demonstrations, please visit the complete website or download the full package.</p>
+                </div>
+                
+                <div class="summary-grid">
+                    <div class="summary-text">
+                        <div class="abstract-box">
+                            <h3>Abstract</h3>
+                            <p>Autonomous vehicles (AVs) heavily rely on LiDAR sensors for accurate 3D perception of their environment. However, the physical properties of LiDAR make it inherently vulnerable to optical manipulation. In this paper, we investigate a novel class of passive LiDAR spoofing attacks that exploit mirror-like surfaces to inject or remove objects from the AV's perception.</p>
+                            
+                            <p>Unlike prior work that requires active emitters or electronic tampering, our attacks rely solely on strategically placed planar mirrors to redirect LiDAR beams—posing a low-cost, stealthy threat. We introduce a comprehensive threat framework encompassing two adversarial goals: <strong>Object Addition Attacks (OAA)</strong>, which create phantom obstacles, and <strong>Object Removal Attacks (ORA)</strong>, which obscure real objects.</p>
+                        </div>
+                        
+                        <div class="key-contributions">
+                            <h3>Key Contributions</h3>
+                            <ul class="contributions-list">
+                                <li>First comprehensive analysis of passive mirror-based LiDAR attacks in automotive contexts</li>
+                                <li>Empirically validated geometric models characterizing mirror-induced LiDAR artifacts</li>
+                                <li>Physics-informed simulation framework enabling safe, repeatable attack evaluation</li>
+                                <li>End-to-end validation on complete autonomous driving software stack (Autoware)</li>
+                                <li>Analysis of potential defense mechanisms and their limitations</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="summary-visual">
+                        <div class="attack-overview">
+                            <h4>Attack Overview</h4>
+                            <div class="attack-types-professional">
+                                <div class="attack-type-card">
+                                    <div class="attack-icon ora-icon">ORA</div>
+                                    <div>
+                                        <h5>Object Removal Attack</h5>
+                                        <p>Mirrors deflect LiDAR beams away from real obstacles, creating dangerous blind spots</p>
+                                    </div>
+                                </div>
+                                <div class="attack-type-card">
+                                    <div class="attack-icon oaa-icon">OAA</div>
+                                    <div>
+                                        <h5>Object Addition Attack</h5>
+                                        <p>Mirrors redirect beams to create phantom obstacles, triggering false emergency responses</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="methodology" class="section alt-bg">
+            <div class="container">
+                <h2 class="section-heading">Research Methodology</h2>
+                
+                <div class="abstract-box">
+                    <h3>Experimental Approach</h3>
+                    <p>Our research methodology encompasses a comprehensive five-phase approach to analyze mirror-based LiDAR attacks:</p>
+                    <ol style="padding-left: 20px; margin-top: 15px;">
+                        <li><strong>Threat Modeling:</strong> Formal analysis of mirror-based attack vectors and adversary capabilities</li>
+                        <li><strong>Real-World Experimentation:</strong> Controlled outdoor experiments with commercial LiDAR systems</li>
+                        <li><strong>Empirical Modeling:</strong> Mathematical characterization of mirror-induced artifacts</li>
+                        <li><strong>Simulation Integration:</strong> CARLA-based framework for safe, scalable attack evaluation</li>
+                        <li><strong>System Validation:</strong> End-to-end testing on production autonomous driving stack</li>
+                    </ol>
+                </div>
+            </div>
+        </section>
+
+        <section id="experiments" class="section">
+            <div class="container">
+                <h2 class="section-heading">Real-World Experimental Campaign</h2>
+                
+                <div class="abstract-box">
+                    <h3>Experimental Setup</h3>
+                    <p><strong>LiDAR System:</strong> Ouster OS1-128 (128-channel, 10Hz)</p>
+                    <p><strong>Mirror Configuration:</strong> High-reflectivity glass panels with silver backing</p>
+                    <p><strong>Test Environment:</strong> Controlled outdoor environment, clear weather conditions</p>
+                    <p><strong>Data Collection:</strong> ROS 2 logging with synchronized sensor data</p>
+                </div>
+                
+                <div class="key-contributions">
+                    <h3>Attack Scenario Implementation</h3>
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 20px;">
+                        <div>
+                            <h4>Object Removal Attack (ORA)</h4>
+                            <p><strong>Objective:</strong> Demonstrate how mirrors can render real obstacles invisible to LiDAR perception</p>
+                            <p><strong>Setup:</strong> Traffic cone placed 4m from vehicle, 60cm×40cm mirror positioned to deflect LiDAR beams away from obstacle</p>
+                        </div>
+                        <div>
+                            <h4>Object Addition Attack (OAA)</h4>
+                            <p><strong>Objective:</strong> Generate phantom obstacles through controlled beam redirection</p>
+                            <p><strong>Setup:</strong> Modular mirror array positioned to reflect beams toward environmental structures</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="notice-box">
+                    <h4>📹 Interactive Content</h4>
+                    <p>Point cloud demonstrations, video analysis, and CARLA simulation results are available in the full interactive version of this website.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="results" class="section alt-bg">
+            <div class="container">
+                <h2 class="section-heading">Research Findings</h2>
+                
+                <div class="key-contributions">
+                    <h3>Critical Vulnerabilities Identified</h3>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin: 20px 0;">
+                        <div style="text-align: center; padding: 20px; background: #f8f9fa; border-radius: 8px;">
+                            <div style="font-size: 2rem; font-weight: 900; color: rgba(34, 110, 147, 1);">100%</div>
+                            <div style="font-size: 0.9rem; color: #666; font-weight: 600;">Attack Success Rate</div>
+                            <p style="font-size: 0.9rem; margin-top: 10px;">All tested mirror configurations successfully induced perception failures</p>
+                        </div>
+                        <div style="text-align: center; padding: 20px; background: #f8f9fa; border-radius: 8px;">
+                            <div style="font-size: 2rem; font-weight: 900; color: rgba(34, 110, 147, 1);">74%</div>
+                            <div style="font-size: 0.9rem; color: #666; font-weight: 600;">Peak Detection Confidence</div>
+                            <p style="font-size: 0.9rem; margin-top: 10px;">Maximum confidence score for phantom vehicle classification</p>
+                        </div>
+                        <div style="text-align: center; padding: 20px; background: #f8f9fa; border-radius: 8px;">
+                            <div style="font-size: 2rem; font-weight: 900; color: rgba(34, 110, 147, 1);">&lt; $50</div>
+                            <div style="font-size: 0.9rem; color: #666; font-weight: 600;">Attack Cost</div>
+                            <p style="font-size: 0.9rem; margin-top: 10px;">Total material cost for effective attack implementation</p>
+                        </div>
+                        <div style="text-align: center; padding: 20px; background: #f8f9fa; border-radius: 8px;">
+                            <div style="font-size: 2rem; font-weight: 900; color: rgba(34, 110, 147, 1);">3-8m</div>
+                            <div style="font-size: 0.9rem; color: #666; font-weight: 600;">Effective Range</div>
+                            <p style="font-size: 0.9rem; margin-top: 10px;">Distance range over which attacks remain effective</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="abstract-box">
+                    <h3>Security Implications</h3>
+                    <ul style="padding-left: 20px;">
+                        <li><strong>Attack Surface Analysis:</strong> Mirror-based attacks represent a previously underexplored attack vector that bypasses existing cybersecurity defenses by operating entirely in the physical domain</li>
+                        <li><strong>Scalability Concerns:</strong> The low cost and accessibility of required materials make these attacks feasible for a wide range of potential adversaries</li>
+                        <li><strong>Detection Challenges:</strong> Passive nature of attacks produces no electronic signatures, making detection with conventional cybersecurity approaches infeasible</li>
+                        <li><strong>Systemic Vulnerability:</strong> Fundamental reliance on LiDAR time-of-flight assumptions makes all current autonomous vehicle architectures potentially susceptible</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer style="background: #1a1a1a; color: #ccc; padding: 40px 0; text-align: center;">
+        <div class="container">
+            <h4 style="color: white; margin-bottom: 15px;">Responsible Disclosure</h4>
+            <p style="margin: 0; font-size: 0.9rem; line-height: 1.6;">This research is conducted for defensive security purposes to improve the safety and security of autonomous vehicle systems. All experiments were performed in controlled environments with appropriate safety measures.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Simple smooth scrolling for navigation
+        document.querySelectorAll('.nav-item').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href').substring(1);
+                const targetSection = document.getElementById(targetId);
+                
+                if (targetSection) {
+                    const navHeight = document.querySelector('.navigation').offsetHeight;
+                    const targetPosition = targetSection.getBoundingClientRect().top + window.pageYOffset - navHeight - 20;
+                    
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Active navigation highlighting
+        window.addEventListener('scroll', function() {
+            const sections = document.querySelectorAll('.section');
+            const navLinks = document.querySelectorAll('.nav-item');
+            const navHeight = document.querySelector('.navigation').offsetHeight;
+            
+            let currentSection = '';
+            const scrollPosition = window.pageYOffset + navHeight + 50;
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.offsetHeight;
+                
+                if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+                    currentSection = section.getAttribute('id');
+                }
+            });
+            
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${currentSection}`) {
+                    link.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
