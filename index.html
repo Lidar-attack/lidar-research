@@ -48,17 +48,6 @@
                             
                             <p>Unlike prior work that requires active emitters or electronic tampering, our attacks rely solely on strategically placed planar mirrors to redirect LiDAR beams—posing a low-cost, stealthy threat. We introduce a comprehensive threat framework encompassing two adversarial goals: <strong>Object Addition Attacks (OAA)</strong>, which create phantom obstacles, and <strong>Object Removal Attacks (ORA)</strong>, which obscure real objects.</p>
                         </div>
-                        
-                        <div class="key-contributions">
-                            <h3>Key Contributions</h3>
-                            <ul class="contributions-list">
-                                <li>First comprehensive analysis of passive mirror-based LiDAR attacks in automotive contexts</li>
-                                <li>Empirically validated geometric models characterizing mirror-induced LiDAR artifacts</li>
-                                <li>Physics-informed simulation framework enabling safe, repeatable attack evaluation</li>
-                                <li>End-to-end validation on complete autonomous driving software stack (Autoware)</li>
-                                <li>Analysis of potential defense mechanisms and their limitations</li>
-                            </ul>
-                        </div>
                     </div>
                     
                     <div class="summary-visual">
@@ -78,6 +67,17 @@
                             </div>
                         </div>
                     </div>
+                </div>
+                
+                <div class="key-contributions-full">
+                    <h3>Key Contributions</h3>
+                    <ul class="contributions-list-full">
+                        <li>First comprehensive analysis of passive mirror-based LiDAR attacks in automotive contexts</li>
+                        <li>Empirically validated geometric models characterizing mirror-induced LiDAR artifacts</li>
+                        <li>Physics-informed simulation framework enabling safe, repeatable attack evaluation</li>
+                        <li>End-to-end validation on complete autonomous driving software stack (Autoware)</li>
+                        <li>Analysis of potential defense mechanisms and their limitations</li>
+                    </ul>
                 </div>
             </div>
         </section>
@@ -272,37 +272,44 @@
                             </div>
                         </div>
                     </div>
-                                <style>
-                    .demo-video-section {
-                        display: flex;
-                        justify-content: center;
-                    }
-                </style>
+                    
                     <div class="collision-demonstration">
                         <h3>Cascading Failure Demonstration</h3>
                         <div class="demo-analysis">
-                             <div class="demo-video-section">
+                            <div class="demo-video-section">
                                 <iframe width="560" height="315" src="https://www.youtube.com/embed/WTuHxXoLGT4" frameborder="0" allowfullscreen></iframe>
                             </div>
-                            <div class="demo-analysis-text">
-                                <h4>Multi-Vehicle Collision Scenario</h4>
-                                <p>This simulation demonstrates the complete failure chain triggered by a mirror-induced phantom obstacle:</p>
-                                <div class="timeline-analysis">
-                                    <div class="timeline-item">
-                                        <span class="timeline-time">T ≈ 11.0s</span>
-                                        <span class="timeline-event">Mirror attack geometry becomes active, phantom object injection initiated</span>
+                        </div>
+                        <div class="horizontal-timeline-section">
+                            <h4>Multi-Vehicle Collision Scenario</h4>
+                            <p>This simulation demonstrates the complete failure chain triggered by a mirror-induced phantom obstacle:</p>
+                            <div class="horizontal-timeline">
+                                <div class="timeline-step">
+                                    <div class="timeline-marker">11.0s</div>
+                                    <div class="timeline-content">
+                                        <strong>Mirror attack activated</strong>
+                                        <span>Phantom object injection initiated</span>
                                     </div>
-                                    <div class="timeline-item">
-                                        <span class="timeline-time">T ≈ 11.2s</span>
-                                        <span class="timeline-event">Lead vehicle perception system detects high-confidence obstacle, emergency braking engaged</span>
+                                </div>
+                                <div class="timeline-step">
+                                    <div class="timeline-marker">11.2s</div>
+                                    <div class="timeline-content">
+                                        <strong>Emergency braking</strong>
+                                        <span>High-confidence obstacle detected</span>
                                     </div>
-                                    <div class="timeline-item">
-                                        <span class="timeline-time">T ≈ 11.8s</span>
-                                        <span class="timeline-event">Following vehicle reaction time insufficient for safe stopping distance</span>
+                                </div>
+                                <div class="timeline-step">
+                                    <div class="timeline-marker">11.8s</div>
+                                    <div class="timeline-content">
+                                        <strong>Insufficient reaction</strong>
+                                        <span>Following vehicle cannot stop safely</span>
                                     </div>
-                                    <div class="timeline-item">
-                                        <span class="timeline-time">T ≈ 12.0s</span>
-                                        <span class="timeline-event">Rear-end collision occurs, demonstrating cascading safety failure</span>
+                                </div>
+                                <div class="timeline-step">
+                                    <div class="timeline-marker">12.0s</div>
+                                    <div class="timeline-content">
+                                        <strong>Collision occurs</strong>
+                                        <span>Cascading safety failure demonstrated</span>
                                     </div>
                                 </div>
                             </div>
@@ -363,7 +370,7 @@
                                 </div>
                             </div>
                             
-                             <div class="response-item-detailed">
+                            <div class="response-item-detailed">
                                 <div class="response-video-container">
                                     <iframe width="560" height="315" src="https://www.youtube.com/embed/h-LPIg3jh9g" frameborder="0" allowfullscreen></iframe>
                                 </div>
