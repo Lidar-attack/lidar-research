@@ -14,6 +14,10 @@
         <div class="container">
             <div class="header-content">
                 <h1 class="paper-title">Reflective Deception: Exploiting LiDAR Vulnerabilities in Autonomous Vehicles Through Mirror-Based Attacks</h1>
+                <div class="conference-info">
+                    <p class="venue">Network and Distributed System Security (NDSS) Symposium 2025</p>
+                    <p class="date">23-28 February 2025, San Diego, CA, USA</p>
+                </div>
             </div>
         </div>
     </header>
@@ -177,6 +181,7 @@
                             </div>
                         </div>
                     </div>
+
                 </div>
             </div>
         </section>
@@ -339,8 +344,44 @@
                     
                     <div class="system-responses">
                         <h3>Autonomous Vehicle Response Analysis</h3>
-                        <p class="response-intro">Different mirror configurations produce distinct failure modes in the autonomous driving system, each presenting unique safety risks:</p>
                         
+                        <div class="real-life-demonstration-center">
+                            <h4>Real-Life Vehicle Response Demonstration</h4>
+                            <div class="demo-description">
+                                <p>This video captures the actual measurement data from our full-stack system evaluation, showing the autonomous vehicle's real-time response to mirror-based attacks. The vehicle is moving at normal speed when it encounters a strategically positioned mirror that creates a phantom obstacle in its LiDAR perception.</p>
+                            </div>
+                            <div class="center-video-container">
+                                <iframe width="700" height="394" src="https://www.youtube.com/embed/Y9o6k9ExkUs" frameborder="0" allowfullscreen></iframe>
+                            </div>
+                            <div class="demo-analysis">
+                                <h5>Real-World Attack Timeline</h5>
+                                <div class="timeline-analysis">
+                                    <div class="timeline-point">
+                                        <strong>0:00 - 0:05:</strong> Vehicle moving normally, no obstacles detected
+                                    </div>
+                                    <div class="timeline-point">
+                                        <strong>0:06 - 0:08:</strong> Mirror creates phantom obstacle in LiDAR perception
+                                    </div>
+                                    <div class="timeline-point">
+                                        <strong>0:09 - 0:12:</strong> Emergency braking initiated due to perceived collision threat
+                                    </div>
+                                    <div class="timeline-point">
+                                        <strong>0:13+:</strong> Vehicle comes to complete stop, demonstrating successful attack
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="autoware-output-section">
+                            <h4>Autoware System Output Analysis</h4>
+                            <p class="response-intro">Following the real-life demonstration, we analyze the detailed system outputs from Autoware to understand how mirror-based attacks affect the complete autonomous driving pipeline:</p>
+                            
+                            <div class="output-comparison">
+                                <div class="comparison-note">
+                                    <p><strong>Note:</strong> The following videos show the Autoware system's internal processing and decision-making responses, captured through ROS 2 logging and visualization tools.</p>
+                                </div>
+                            </div>
+
                         <div class="response-analysis-grid">
                             <div class="response-item-detailed">
                                 <div class="response-video-container">
