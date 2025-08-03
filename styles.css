@@ -490,7 +490,11 @@ body {
     gap: 2rem;
     margin: 2rem 0;
 }
-
+.timeline-analysis {
+    margin-left: 0;
+    text-align: left;
+    padding-left: 20px; /* optional for spacing */
+}
 .impact-category {
     background: white;
     padding: 2rem;
